@@ -1,0 +1,31 @@
+#erro {
+    width: 80%;
+    margin: 0 auto;
+    border: 1px solid red;
+    background-color: beige;
+}
+
+table, tr, td, th {
+    border-collapse: collapse;
+    border: 1px solid black;
+    color: red;
+    padding: 10px;
+}
+
+#images-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 8px;
+}
+
+.disabled {
+    cursor: not-allowed;
+    background-color: lightgray;
+}
+
+.img-resize {
+    float: left;
+    width:  100px!important;
+    height: 100px!important;
+    object-fit: cover;
+}

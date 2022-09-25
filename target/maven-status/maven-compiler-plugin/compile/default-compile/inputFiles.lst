@@ -1,0 +1,17 @@
+/home/gravery/Materias/DSW1/Sub/src/main/java/br/ufscar/dc/dsw/dao/LojaDAO.java
+/home/gravery/Materias/DSW1/Sub/src/main/java/br/ufscar/dc/dsw/controller/UserController.java
+/home/gravery/Materias/DSW1/Sub/src/main/java/br/ufscar/dc/dsw/domain/Loja.java
+/home/gravery/Materias/DSW1/Sub/src/main/java/br/ufscar/dc/dsw/dao/CarroDAO.java
+/home/gravery/Materias/DSW1/Sub/src/main/java/br/ufscar/dc/dsw/controller/UsuarioController.java
+/home/gravery/Materias/DSW1/Sub/src/main/java/br/ufscar/dc/dsw/controller/ImageController.java
+/home/gravery/Materias/DSW1/Sub/src/main/java/br/ufscar/dc/dsw/dao/GenericDAO.java
+/home/gravery/Materias/DSW1/Sub/src/main/java/br/ufscar/dc/dsw/dao/UsuarioDAO.java
+/home/gravery/Materias/DSW1/Sub/src/main/java/br/ufscar/dc/dsw/domain/Proposta.java
+/home/gravery/Materias/DSW1/Sub/src/main/java/br/ufscar/dc/dsw/domain/Usuario.java
+/home/gravery/Materias/DSW1/Sub/src/main/java/br/ufscar/dc/dsw/controller/IndexController.java
+/home/gravery/Materias/DSW1/Sub/src/main/java/br/ufscar/dc/dsw/dao/PropostaDAO.java
+/home/gravery/Materias/DSW1/Sub/src/main/java/br/ufscar/dc/dsw/controller/LojaController.java
+/home/gravery/Materias/DSW1/Sub/src/main/java/br/ufscar/dc/dsw/domain/Carro.java
+/home/gravery/Materias/DSW1/Sub/src/main/java/br/ufscar/dc/dsw/util/Erro.java
+/home/gravery/Materias/DSW1/Sub/src/main/java/br/ufscar/dc/dsw/controller/AdminController.java
+/home/gravery/Materias/DSW1/Sub/src/main/java/br/ufscar/dc/dsw/controller/LoginController.java

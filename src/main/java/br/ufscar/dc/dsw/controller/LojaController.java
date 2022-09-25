@@ -4,7 +4,6 @@ import java.io.*;
 import java.util.*;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.sql.Date;
 import java.sql.SQLException;
 
 import javax.servlet.*;
@@ -35,12 +34,12 @@ public class LojaController extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	private CarroDAO pacoteDAO;
-	private Carro lastPacote;
+	private CarroDAO carroDAO;
+	private Carro ultCarro;
 
 	@Override
 	public void init() {
-		pacoteDAO = new CarroDAO();
+		carroDAO = new CarroDAO();
 	}
 
 	@Override
@@ -100,7 +99,7 @@ public class LojaController extends HttpServlet {
 				List fileItems = imageController.GetServletFileItem().parseRequest(request);
 				//Loja auxA = (Loja) request.getSession().getAttribute("usuarioLogado");
 				ServletContext context = request.getServletContext();
-				String location = context.getRealPath("images") + File.separator + lastPacote.getId();
+				String location = context.getRealPath("images") + File.separator + ultCarro.getId();
 
 				imageController.SaveFileList(location, fileItems);
 			} catch(Exception ex) {
@@ -139,7 +138,7 @@ public class LojaController extends HttpServlet {
 	private void deletar(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException, SQLException {
 		Long id = Long.parseLong(request.getParameter("id"));
-		pacoteDAO.delete(id);
+		carroDAO.delete(id);
 		response.sendRedirect("lista");
 	}
 	
@@ -156,13 +155,13 @@ public class LojaController extends HttpServlet {
 		BigDecimal valor = BigDecimal.valueOf(Double.valueOf(request.getParameter("valor")));
 		String descricao = request.getParameter("descricao");
 
-		Carro pacote = new Carro(
+		Carro carro = new Carro(
 				id, idloja, cnpjloja, placa,
 				modelo, chassi, ano,
 				quilometragem, valor, descricao
 		);
-		lastPacote = pacote;
-		pacoteDAO.update(pacote);
+		ultCarro = carro;
+		carroDAO.update(carro);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/logado/loja/adicionarImagens.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -170,8 +169,8 @@ public class LojaController extends HttpServlet {
 	private void apresentaFormEdicao(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Long id = Long.parseLong(request.getParameter("id"));
-		Carro pacote = pacoteDAO.getbyID(id);
-		request.setAttribute("pacote", pacote);
+		Carro carro = carroDAO.getbyID(id);
+		request.setAttribute("carro", carro);
 			
 		this.apresentaFormCadastro(request, response);
 	}
@@ -185,7 +184,7 @@ public class LojaController extends HttpServlet {
 	private void insercao(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 
-		Long idloja = Long.valueOf(request.getParameter("idloja"));
+		Long idloja = Long.valueOf(request.getParameter("idLoja"));
 		String cnpjloja = request.getParameter("cnpj");
 		String placa = request.getParameter("placa");
 		String modelo = request.getParameter("modelo");
@@ -195,12 +194,12 @@ public class LojaController extends HttpServlet {
 		BigDecimal valor = BigDecimal.valueOf(Double.valueOf(request.getParameter("valor")));
 		String descricao = request.getParameter("descricao");
 
-		Carro pacote = new Carro(
+		Carro carro = new Carro(
 				idloja, cnpjloja, placa,
 				modelo, chassi, ano,
 				quilometragem, valor, descricao
 		);
-		pacoteDAO.insert(pacote);
+		carroDAO.insert(carro);
 		response.sendRedirect("lista");
 	}
 

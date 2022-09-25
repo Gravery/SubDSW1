@@ -29,7 +29,7 @@ create table Carro(
 id bigint not null auto_increment, 
 idLoja bigint not null,
 cnpj varchar(16) not null, 
-placa varchar(256) not null, 
+placa varchar(256) not null unique, 
 modelo varchar(256) not null, 
 chassi varchar(256) not null, 
 ano int not null, 
@@ -55,7 +55,9 @@ insert into Usuario(nome, email, cpf, senha, nascimento, papel) values ('Adminis
 
 insert into Usuario(nome, email, cpf, senha, sexo, nascimento, telefone, papel) values ('Usuario', 'usuario@email.com', '123456789-20', 'user', 'F', "1999-12-12" , '123456789' ,'USR');
 
-insert into Loja(cnpj, nome, email, senha, descricao) values ('1234567890/1234','Loja 1', 'loja1@email.com', '12345', 'Loja de Venda de Carros');
+insert into Loja(cnpj, nome, email, senha, descricao) values ('1234567890/1234','Loja 1', 'loja1@email.com', '12345', 'Loja de Venda de Carros 1');
+
+insert into Loja(cnpj, nome, email, senha, descricao) values ('0987654321/1234','Loja 2', 'loja2@email.com', '12345', 'Loja de Venda de Carros 2');
 
 insert into Carro(idLoja, cnpj, placa, modelo, chassi, ano, quilometragem, valor, descricao) values (1, '1234567890/1234', 'H1234E', 'Uno', '12345', 1990, 30000, 15000, 'Uno usado');
 

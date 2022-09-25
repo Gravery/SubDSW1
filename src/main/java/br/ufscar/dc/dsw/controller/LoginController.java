@@ -58,7 +58,7 @@ public class LoginController extends HttpServlet {
 				} else if(agencia != null) {
 					if (agencia.getSenha().equals(senha)) {
 						request.getSession().setAttribute("usuarioLogado", agencia);
-						response.sendRedirect("agencia/");
+						response.sendRedirect("loja/");
 						return;
 					} else {
 						erros.add("Senha ou email inválidos");

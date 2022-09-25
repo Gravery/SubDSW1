@@ -121,7 +121,7 @@ public class LojaDAO extends GenericDAO {
 	public Loja getbyID(Long id) {
 		Loja loja = null;
 
-		String sql = "SELECT * from loja WHERE id = ?";
+		String sql = "SELECT * from Loja WHERE id = ?";
 
 		try {
 			Connection conn = this.getConnection();
@@ -151,7 +151,7 @@ public class LojaDAO extends GenericDAO {
 	public Loja getbyEmail(String email) {
 		Loja loja = null;
 
-		String sql = "SELECT * from loja WHERE email = ?";
+		String sql = "SELECT * from Loja WHERE email = ?";
 
 		try {
 			Connection conn = this.getConnection();
@@ -181,7 +181,7 @@ public class LojaDAO extends GenericDAO {
 	public Loja getByCNPJ(String cnpj) {
 		Loja loja = null;
 
-		String sql = "SELECT * from loja WHERE CNPJ = ?";
+		String sql = "SELECT * from Loja WHERE cnpj = ?";
 
 		try {
 			Connection conn = this.getConnection();

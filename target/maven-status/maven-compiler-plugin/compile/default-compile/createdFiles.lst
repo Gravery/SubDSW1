@@ -1,0 +1,17 @@
+br/ufscar/dc/dsw/controller/AdminController.class
+br/ufscar/dc/dsw/controller/LojaController.class
+br/ufscar/dc/dsw/dao/CarroDAO.class
+br/ufscar/dc/dsw/domain/Proposta.class
+br/ufscar/dc/dsw/controller/UserController.class
+br/ufscar/dc/dsw/domain/Usuario.class
+br/ufscar/dc/dsw/domain/Carro.class
+br/ufscar/dc/dsw/controller/IndexController.class
+br/ufscar/dc/dsw/domain/Loja.class
+br/ufscar/dc/dsw/dao/GenericDAO.class
+br/ufscar/dc/dsw/controller/UsuarioController.class
+br/ufscar/dc/dsw/controller/LoginController.class
+br/ufscar/dc/dsw/dao/LojaDAO.class
+br/ufscar/dc/dsw/dao/PropostaDAO.class
+br/ufscar/dc/dsw/dao/UsuarioDAO.class
+br/ufscar/dc/dsw/util/Erro.class
+br/ufscar/dc/dsw/controller/ImageController.class
