@@ -75,12 +75,14 @@ public class UsuarioController extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 
 		Usuario usuario = (Usuario) request.getSession().getAttribute("usuarioLogado");
-
+		 
 		String carro = request.getParameter("carroDesejado");
 		String valorStr = request.getParameter("valor");
+		String idLoja = request.getParameter("idLoja");
+		String pagamento = request.getParameter("pagamento");
 		Date dataAtual = new Date(LocalDate.now().toEpochDay());
 
-		Proposta proposta = new Proposta(usuario.getId(), Long.valueOf(carro).longValue(), dataAtual, Float.valueOf(valorStr).floatValue(), 1);
+		Proposta proposta = new Proposta(usuario.getId(), Long.valueOf(idLoja), Long.valueOf(carro).longValue(), dataAtual, Float.valueOf(valorStr).floatValue(), pagamento, 1);
 		// List<Proposta> propList = propostaDAO.getAllbyIDUsuario(usuario.getId());
 		// Iterator<Proposta> propListiterator = propList.iterator();
 		// Proposta proposta2;

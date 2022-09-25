@@ -25,3 +25,11 @@ function requestCarroDelete(context, idCarro) {
 function requestCarroEdit(context, idCarro) {
     window.location.assign("/" + context + "/loja/edicao?id=" + idCarro);
 }
+
+function requestLojaAccept(context, idCarro) {
+    window.location.assign("/" + context + "/loja/aceitar?id=" + idCarro);
+}
+
+function requestLojaRefuse(context, idCarro) {
+    window.location.assign("/" + context + "/loja/recusar?id=" + idCarro);
+}

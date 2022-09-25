@@ -24,9 +24,11 @@ import br.ufscar.dc.dsw.controller.ImageController;
 import br.ufscar.dc.dsw.dao.LojaDAO;
 import br.ufscar.dc.dsw.dao.CarroDAO;
 import br.ufscar.dc.dsw.dao.UsuarioDAO;
+import br.ufscar.dc.dsw.dao.PropostaDAO;
 import br.ufscar.dc.dsw.domain.Loja;
 import br.ufscar.dc.dsw.domain.Carro;
 import br.ufscar.dc.dsw.domain.Usuario;
+import br.ufscar.dc.dsw.domain.Proposta;
 import br.ufscar.dc.dsw.util.Erro;
 
 @WebServlet(urlPatterns = "/loja/*")
@@ -36,10 +38,12 @@ public class LojaController extends HttpServlet {
 
 	private CarroDAO carroDAO;
 	private Carro ultCarro;
+	private PropostaDAO propostaDAO;
 
 	@Override
 	public void init() {
 		carroDAO = new CarroDAO();
+		propostaDAO = new PropostaDAO();
 	}
 
 	@Override
@@ -76,6 +80,12 @@ public class LojaController extends HttpServlet {
 				break;
 			case "/deletar":
 				deletar(request, response);
+				break;
+			case "/recusar":
+				recusar(request, response);
+				break;
+			case "/aceitar":
+				aceitar(request, response);
 				break;
 			default:
 				home(request, response);
@@ -201,6 +211,45 @@ public class LojaController extends HttpServlet {
 		);
 		carroDAO.insert(carro);
 		response.sendRedirect("lista");
+	}
+
+	private void recusar(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+
+		Long propostaId = Long.parseLong(request.getParameter("id"));
+		
+		Proposta proposta = propostaDAO.getbyID(propostaId);
+		
+		if (proposta.getStatusProposta() == 1) {
+			propostaDAO.updateStatus(proposta, 0);
+			request.setAttribute("propostaFechada", false);
+			response.sendRedirect("home");
+		} 
+		else {
+			request.setAttribute("propostaFechada", true);
+			response.sendRedirect("home");
+		}
+	}
+
+	private void aceitar(HttpServletRequest request, HttpServletResponse response)
+		throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
+
+		Long propostaId = Long.parseLong(request.getParameter("id"));
+		
+		Proposta proposta = propostaDAO.getbyID(propostaId);
+		
+		if (proposta.getStatusProposta() == 1) {
+			propostaDAO.updateStatus(proposta, 2);
+			request.setAttribute("propostaFechada", false);
+			response.sendRedirect("home");
+		} 
+		else {
+			request.setAttribute("propostaFechada", true);
+			response.sendRedirect("home");
+		}
+		
 	}
 
 }

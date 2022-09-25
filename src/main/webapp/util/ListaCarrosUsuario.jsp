@@ -21,7 +21,7 @@
 </head>
 <body>
     <c:choose>
-        <c:when test="${PropostaDAO().getAllActivebyIDUsuario(sessionScope.usuarioLogado.id).size() == '0'}">
+        <c:when test="${PropostaDAO().getAllAceitas(sessionScope.usuarioLogado.id).size() == '0'}">
             <h2>Nenhum Carro Adquirido</h2>
         </c:when>    
         <c:otherwise>
@@ -38,12 +38,13 @@
             <th>Loja</th>
             <th>Ano</th>
             <th>Quilometragem</th>
+            <th>Pagamento</th>
             <th>Valor</th>
             <th>Fotos</th>
             <th>Ações</th>
         </tr>
         </thead>
-        <c:forEach var="proposta" items="${PropostaDAO().getAllActivebyIDUsuario(sessionScope.usuarioLogado.id)}">
+        <c:forEach var="proposta" items="${PropostaDAO().getAllAceitas(sessionScope.usuarioLogado.id)}">
             <tr>
                 <td>${CarroDAO().getbyID(proposta.idCarro).id}</td>
                 <td>${CarroDAO().getbyID(proposta.idCarro).descricao}</td>
@@ -53,7 +54,8 @@
                 <td>${LojaDAO().getByCNPJ(CarroDAO().getbyID(proposta.idCarro).CNPJ).nome}</td>
                 <td>${CarroDAO().getbyID(proposta.idCarro).ano}</td>
                 <td>${CarroDAO().getbyID(proposta.idCarro).quilometragem}</td>
-                <td>${CarroDAO().getbyID(proposta.idCarro).valor}</td>
+                <td>${proposta.pagamento}</td>
+                <td>${proposta.valor}</td>
                 <td>
                         <c:forEach var="image"
                                 items='${CarroDAO().getbyID(proposta.idCarro)
@@ -63,11 +65,6 @@
                             <img src="${image}" width="64px">
                         </c:forEach>
                     </div>
-                </td>
-                <td>
-                    <button class="btn btn-danger" onclick='requestRemoveCarroUsuario("<%= contextPath %>", ${proposta.id})' >
-                        Cancelar
-                    </button>
                 </td>
             </tr>
         </c:forEach>

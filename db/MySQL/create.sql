@@ -43,12 +43,15 @@ foreign key (idLoja) references Loja (id) ON DELETE CASCADE ON UPDATE CASCADE);
 create table Proposta(
     id bigint not null auto_increment,
     idUsuario bigint not null,
+    idLoja bigint not null,
     idCarro bigint not null,
     dataProposta date not null,
     valor float,
+    pagamento varchar(50) not null,
     statusProposta int not null,
     primary key (id),
     foreign key (idUsuario) references Usuario (id) ON DELETE CASCADE ON UPDATE CASCADE,
+    foreign key (idLoja) references Loja (id) ON DELETE CASCADE ON UPDATE CASCADE,
     foreign key (idCarro) references Carro (id) ON DELETE CASCADE ON UPDATE CASCADE);
 
 insert into Usuario(nome, email, cpf, senha, nascimento, papel) values ('Administrador', 'admin@email.com', '123456789-10', 'admin', "2000-11-11" ,'ADM');
@@ -67,9 +70,9 @@ insert into Carro(idLoja, cnpj, placa, modelo, chassi, ano, quilometragem, valor
 
 insert into Carro(idLoja, cnpj, placa, modelo, chassi, ano, quilometragem, valor, descricao) values (1, '1234567890/1234', 'A5JM45', 'Palio', '12345', 2021, 0, 38000, 'Palio 0');
 
-insert into Proposta(idUsuario, idCarro, dataProposta, valor, statusProposta) values (1, 1, "2022-09-26", 10000, 1);
+insert into Proposta(idUsuario, idLoja, idCarro, dataProposta, valor, pagamento, statusProposta) values (1, 1, 1, "2022-09-26", 10000, 'Cheque', 1);
 
-insert into Proposta(idUsuario, idCarro, dataProposta, valor, statusProposta) values (2, 3, "2022-09-26", 12000, 1);
+insert into Proposta(idUsuario, idLoja, idCarro, dataProposta, valor, pagamento, statusProposta) values (2, 3, 1, "2022-09-26", 12000, 'A vista', 1);
 
-insert into Proposta(idUsuario, idCarro, dataProposta, valor, statusProposta) values (3, 2, "2022-09-26", 13000, 0);
+insert into Proposta(idUsuario, idLoja, idCarro, dataProposta, valor, pagamento, statusProposta) values (3, 2, 1, "2022-09-26", 13000, 'Cartao', 0);
 

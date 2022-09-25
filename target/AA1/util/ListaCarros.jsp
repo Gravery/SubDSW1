@@ -86,8 +86,12 @@ String contextPath = request.getContextPath().replace("/", "");
 							<form id="formulario${carro.id}" method="post" action="comprar">
 								<input type="hidden" name="carroDesejado"
 									value="${carro.id}" required />
-								<input type="hidden"
+								<input type="hidden" name="idLoja"
+									value="${carro.idLoja}" required />
+								<input type="number"
 									name="valor" value="${carro.valor}" required />
+								<input type="text"
+									name="pagamento" value="pagamento" required />
 								<input
 									type="submit" class="btn btn-primary" value="Comprar"/>
 							</form>

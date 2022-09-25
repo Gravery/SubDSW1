@@ -27,5 +27,9 @@
 			page="${renderRequest.getContextPath()}//util/ListaCarrosLoja.jsp" />
 		<br>
 	</div>
+
+	<jsp:include page="${renderRequest.getContextPath()}//util/ListaPropostasAbertasLoja.jsp" />
+	<br>
+	<br>
 </body>
 </html>
