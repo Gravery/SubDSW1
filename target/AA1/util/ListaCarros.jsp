@@ -4,6 +4,7 @@
 <%@ page import="java.io.File"%>
 <%@ page import="br.ufscar.dc.dsw.dao.CarroDAO"%>
 <%@ page import="br.ufscar.dc.dsw.dao.LojaDAO" %>
+<%@ page import="br.ufscar.dc.dsw.dao.PropostaDAO" %>
 <%@ page import="java.util.List"%>
 <%@ page import="br.ufscar.dc.dsw.domain.Carro"%>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
@@ -81,7 +82,7 @@ String contextPath = request.getContextPath().replace("/", "");
 					<li class="list-group-item">Valor: ${carro.valor}</li>
 				</ul>
 					<c:choose>
-						<c:when test="${sessionScope.usuarioLogado.papel == 'USR'}">
+						<c:when test="${sessionScope.usuarioLogado.papel == 'USR' && PropostaDAO().isAvailable(carro.id)}">
 						<div class="card-body">
 							<form id="formulario${carro.id}" method="post" action="comprar">
 								<input type="hidden" name="carroDesejado"

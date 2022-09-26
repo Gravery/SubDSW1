@@ -70,9 +70,6 @@ insert into Carro(idLoja, cnpj, placa, modelo, chassi, ano, quilometragem, valor
 
 insert into Carro(idLoja, cnpj, placa, modelo, chassi, ano, quilometragem, valor, descricao) values (1, '1234567890/1234', 'A5JM45', 'Palio', '12345', 2021, 0, 38000, 'Palio 0');
 
-insert into Proposta(idUsuario, idLoja, idCarro, dataProposta, valor, pagamento, statusProposta) values (1, 1, 1, "2022-09-26", 10000, 'Cheque', 1);
+insert into Carro(idLoja, cnpj, placa, modelo, chassi, ano, quilometragem, valor, descricao) values (1, '1234567890/1234', 'XSDF67', 'Fusca', '12345', 2017, 14000, 28000, 'Fusca usado');
 
-insert into Proposta(idUsuario, idLoja, idCarro, dataProposta, valor, pagamento, statusProposta) values (2, 3, 1, "2022-09-26", 12000, 'A vista', 1);
-
-insert into Proposta(idUsuario, idLoja, idCarro, dataProposta, valor, pagamento, statusProposta) values (3, 2, 1, "2022-09-26", 13000, 'Cartao', 0);
 

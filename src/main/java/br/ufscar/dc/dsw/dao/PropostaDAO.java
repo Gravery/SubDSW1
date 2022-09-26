@@ -342,7 +342,6 @@ public class PropostaDAO extends GenericDAO{
         return listaPropostasUsuario;
     }
     
-    // LISTAR PROPOSTAS DO Carro
     public List<Proposta> getAllbyIDCarro(Long idCarro) {
 
         List<Proposta> listaPropostasCarros = new ArrayList<>();
@@ -376,6 +375,34 @@ public class PropostaDAO extends GenericDAO{
             throw new RuntimeException(e);
         }
         return listaPropostasCarros;
+    }
+
+    public boolean isAvailable(Long idCarro) {
+
+        String sql = "SELECT * from Proposta u";
+        
+        try {
+            Connection conn = this.getConnection();
+            Statement statement = conn.createStatement();
+
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                Long idCarro_db = resultSet.getLong("idCarro");
+                if (idCarro == idCarro_db) {
+                    int statusProposta = resultSet.getInt("statusProposta");
+                    
+                    if (statusProposta != 0) {
+                        return false;
+                    }
+                }
+            }
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+            }
+        return true;
     }
 
 }
